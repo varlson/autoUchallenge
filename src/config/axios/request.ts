@@ -3,9 +3,8 @@ import ApiRequest from "./config";
 
 export type RequestT = {
   method?: "get" | "post";
-  data?: FormData;
+  data?: unknown;
   url: string;
-  headers?: Record<string, string>;
   params?: Record<string, unknown>;
 };
 
@@ -16,33 +15,30 @@ export async function MakeRequest<TSuccess>({
   method = "get",
   url,
   data,
-  headers,
   params,
 }: RequestT): Promise<SuccessResponse<TSuccess> | ErrorResponse> {
-  const updatedHeader = {
-    ...headers,
-    ...(method === "post" ? { "Content-Type": "multipart/form-data" } : {}),
-  };
   try {
-    const config = {
+    const isFormData = data instanceof FormData;
+
+    const contentType = isFormData ? "multipart/form-data" : "application/json";
+
+    const response = await ApiRequest.request({
       url,
       method,
-      headers: {
-        ...ApiRequest.defaults.headers,
-        ...updatedHeader,
-      },
+      data,
       params,
-    };
+      headers: {
+        "Content-Type": contentType,
+      },
+    });
 
-    if (method == "post") {
-      Object.assign(config, { data });
-    }
-
-    const response = await ApiRequest[method](url);
     return { success: true, data: response.data };
   } catch (error: unknown) {
     if (axios.isAxiosError(error)) {
-      return { success: false, error: error.message };
+      return {
+        success: false,
+        error: error.response?.data.error ?? error.message,
+      };
     }
     return { success: false, error: "Erro desconhecido" };
   }

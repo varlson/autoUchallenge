@@ -3,16 +3,11 @@ import React from "react";
 import UseAnimations from "react-useanimations";
 import loading from "react-useanimations/lib/loading";
 
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 
 export type SpinnerProps = {

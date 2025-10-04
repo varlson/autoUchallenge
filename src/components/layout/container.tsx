@@ -2,7 +2,7 @@ import React, { HTMLAttributes, ReactNode } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-export const ContainerT = cva("container-w ", {
+export const ContainerT = cva("container-w px-4", {
   variants: {
     display: {
       flex: "flex",

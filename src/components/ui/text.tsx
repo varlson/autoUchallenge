@@ -6,7 +6,8 @@ const textStyles = cva("font-roboto", {
   variants: {
     size: {
       displayLarge: "text-[57px] leading-[64px] font-regular tracking-[0px]",
-      displayMedium: "text-[45px] leading-[52px] font-regular tracking-[0px]",
+      displayMedium:
+        "text-[32px] md:text-[42px] lg:text-[45px] leading-[52px] font-regular tracking-[0px]",
       displaySmall: "text-[36px] leading-[44px] font-regular tracking-[0px]",
       headlineLarge: "text-[32px] leading-[40px] font-regular tracking-[0px]",
       headlineMedium: "text-[28px] leading-[36px] font-regular tracking-[0px]",
@@ -26,7 +27,8 @@ const textStyles = cva("font-roboto", {
       secondary: "text-secondary",
       success: "text-success",
       warning: "text-warning",
-      offWhite: "text-off-white-600",
+      offWhite: "text-off-white-100",
+      info: "text-info",
     },
     weight: {
       light: "font-light",
@@ -34,7 +36,7 @@ const textStyles = cva("font-roboto", {
       medium: "font-medium",
       semibold: "font-semibold",
       bold: "font-bold",
-      extrabold: "font-",
+      extrabold: "font-extrabold",
     },
   },
   defaultVariants: {

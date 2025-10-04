@@ -1,9 +1,10 @@
 import React from "react";
 import { Text } from "./text";
+import Link from "next/link";
 
 function Logo() {
   return (
-    <div className="flex flex-col items-center">
+    <Link href="/" className="flex flex-col items-center">
       <div className="flex">
         <Text weight={"bold"} size={"displayMedium"}>
           Foco
@@ -12,10 +13,13 @@ function Logo() {
           Mail
         </Text>
       </div>
-      <Text className="tracking-[3px]" size={"bodyMedium"}>
+      <Text
+        className="tracking-[1px] md:tracking-[2px] lg:tracking-[3px]"
+        size={"bodyMedium"}
+      >
         FOCO NO QUE IMPORTA
       </Text>
-    </div>
+    </Link>
   );
 }
 
